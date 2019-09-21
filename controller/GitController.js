@@ -40,9 +40,11 @@ async function getUsernames(country, datefrom, todate, id, lambdaUrl) {
                 return await UserService.revertDateFlags(id);
             }
         })
-        .catch(function (error) {
+        .catch(async function (error) {
             console.log(error.response.data.message);
-            console.log(error.response);
+            console.log("Lambda Down: ", lambdaUrl);
+            return await UserService.revertDateFlags(id);
+            // console.log(error.response);
         });
 
     
@@ -111,5 +113,5 @@ async function launch() {
     }
 }
 
-intervalManager(true, launch, 2000);
+intervalManager(true, launch, random_time);
 exports.getUsernames = getUsernames;
