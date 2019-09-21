@@ -3,8 +3,8 @@ var moment = require('moment');
 
 
 async function datesControl() {
-    var a = moment('2009-01-01');
-    var b = moment('2018-12-31');
+    var a = moment('2019-01-01');
+    var b = moment('2019-08-31');
     var arr = [];
     for (var m = moment(a); m.diff(b, 'days') <= 0; m.add(6, 'days')) {
         var next = moment(m);
@@ -27,7 +27,7 @@ async function get7Dates() {
     return await UserService.get7Dates();
 }
 
-// datesControl();
+datesControl();
 
 exports.datesControl = datesControl;
 exports.getSingleDate = getSingleDate;
